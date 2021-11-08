@@ -1,0 +1,16 @@
+
+
+{% load static %}
+
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'aruba/styles/all-aruba.css' %}">
+{% endblock %}
+
+
+{% block body %}
+<section>
+    <ol>
+        {% include 'aruba/includes/switches-item.html' with title=switches_item.title location='Aruba Switches' slug=switches_item.slug %}
+    </ol>
+</section>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'aruba/base/base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{ switches_title }}
+{% endblock %}
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'aruba/styles/aruba-detail.css' %}">
+<link rel="stylesheet" href="{% static 'aruba/styles/all-aruba.css' %}">
+{% endblock %}
+
+{% block main_heading %}Switches Model are coming up{% endblock %}
+
+{% block header_content %}<p>Select the Model that you needs!</p>{% endblock %}
+
+{% block body %}
+{{switches_found}}
+{% if switches_found %}
+        <article>
+            <img id="main-image" src="{{switches.image.url}}" alt="{{switches.title}}">
+            
+            <section id="location">
+                <h2>Switch Description</h2>
+                <address>This Switch Specification <span>Model: </span>{{ switches.title }}  {{ switches.product }}.</address>
+            </section>
+
+            <section id=details>
+                <h2>What's This Switch about?</h2>
+                <p>{{ switches.spec }}</p>
+                <footer>
+                    <p>Need Mode Deetails? Please<a href="">Contact Us</a></p>
+                </footer>
+            </section>
+            
+            <section id="registration">
+                <h2>Reserve Us!</h2>
+                <form action="{{switches.slug}}" method="POST">
+                    {% csrf_token %}
+                    <ul>
+                      {{ form }}  
+                    </ul>
+                    <div id="registration-actions">
+                        <button>Register</button>
+                    </div>
+                </form>
+                
+            </section>
+
+        </article>
+{% else %}
+<p>No Switches Found!</p>
+{% endif %}
+{% endblock %}

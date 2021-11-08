@@ -1,0 +1,41 @@
+{% extends 'aruba/base/base.html' %}
+
+{% load static %}
+
+{% block title %}Aruba{% endblock %}
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'aruba/styles/all-aruba.css' %}">
+{% endblock %}
+
+
+{% block main_heading %}Switches Model are coming up{% endblock %}
+
+{% block header_content %}<p>Select the Model that you needs!</p>{% endblock %}
+
+{% block body %}
+<section>
+    <h2>Upcoming new Model</h2>
+    <ol>
+        {% for switches_item in switches %}
+            <li class='meetup-item'>
+                <article>
+                    <div class="meetup-summary">
+                        <div class="meetup-image">
+                            <img src="{{switches_item.image.url}}" alt="{{ switches_item.title }}">
+                        </div>
+                        <div class="meetup-details">
+                            <h3>{{ switches_item.title }}</h3>
+                            <address>{{ location }}</address>
+                        </div>
+                    </div>
+                    <div class="meetup-actions">
+                        <a href="{% url 'switches-detail' switches_item.slug %}" class="btn">More Details</a>
+                    </div>
+                </article>
+            </li>
+        {% endfor %}
+    </ol>
+</section>
+{% endblock %}
+
+</html>

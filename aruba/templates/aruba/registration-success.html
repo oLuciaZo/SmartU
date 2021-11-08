@@ -1,0 +1,24 @@
+{% extends 'aruba/base/base.html' %}
+
+{%load static%}
+
+{%block title%}You Registered SuccessFully!{%endblock%}
+
+{%block site_css%}
+<link rel="stylesheet" href="{% static 'aruba/styles/registration-confirmation.css' %}">
+{%endblock%}
+
+{%block main_heading%}Thank for signing up!{%endblock%}
+
+{%block body%}
+<section id="confirmation">
+<h2>Registeration SuccessFully!</h2>
+<p>Thanks for singing up - Switch will delivery to you in 180 days</p>
+<P>Any question please contact <a href="">Admin Team</a></P>
+</section>
+
+<section id="continue">
+    <p>You can reserve for another models!</p>
+    <p><a href="/aruba" class="btn">Explore our Switches Models</a></p>
+</section>
+{% endblock %}

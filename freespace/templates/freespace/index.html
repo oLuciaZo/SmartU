@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freespace</title>
+    <link rel="stylesheet" href="{% static 'freespace/styles/base.css' %}">
+    <link rel="stylesheet" href="{% static 'freespace/styles/all-aruba.css' %}">
+</head>
+<body>
+    <header id="main-header">
+        <nav><a href="/freespace" id="main-logo">Free Space - Find Your Location to Study Online</a></nav>
+        <h1>Freespace</h1>
+        <img src="/files/images/arubalogo.png" alt="Aruba">
+    </header>
+    <main>
+        <section>
+            <h2>Building List</h2>
+            {% for capacity_item in capacity %}
+            <ol>
+                    <li class='meetup-item'>
+                        <article>
+                            <div class="meetup-summary">
+                                <div class="meetup-image">
+                                    <img src="{{capacity_item.image.url}}" alt="{{capacity_item.building}}">
+                                </div>
+                                <div class="meetup-details">
+                                    <h3>{{ capacity_item.building }}</h3>
+                                    <address><b>Capacity Load {{ capacity_item.percentage }} - {{ capacity_item.condition }}</b></address>
+                                </div>
+                            </div>
+                            <div class="meetup-actions">
+                                <a href="" class="btn"><b>Users Online {{ capacity_item.client }}</b></a>
+                            </div>
+                        </article>
+                    </li>
+            </ol>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>
